@@ -47,7 +47,7 @@ exports.getAllUsers = (req, res) => {
     );
 };
 
-exports.getSelectedUser = (req, res) => {
+exports.getUserbyId = (req, res) => {
   const id = req.params.id;
   User.findByPk(id)
     .then((user) => res.send(user))
