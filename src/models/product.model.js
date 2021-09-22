@@ -4,8 +4,13 @@ module.exports = (sequelize, DataTypes) => {
   const Product = sequelize.define("Product", {
     id: {
       type: DataTypes.UUID,
-      defaultValue: DataTypes.UUIDV4,
+      allowNull: false,
       primaryKey: true,
+    },
+    UserId: {
+      type: DataTypes.UUID,
+      defaultValue: DataTypes.UUIDV4,
+      
     },
     title: {
       type: DataTypes.STRING,
@@ -42,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         notEmpty: true,
       },
     },
+  
     requirePrescription: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
@@ -54,3 +60,6 @@ module.exports = (sequelize, DataTypes) => {
 };
 
 // id, title, price, description, category, image, rate
+
+
+

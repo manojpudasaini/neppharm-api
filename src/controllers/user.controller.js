@@ -1,6 +1,7 @@
-const { User } = require("../models");
+const { User, Product } = require("../models");
 const { cloudinary } = require("../utils/cloudinary");
-
+// const Product=require("../models/product.model.js");
+const { db } = require('sequelize')
 exports.postUserDetails = async (req, res) => {
   if (!req.body) {
     res.status(400).send({
@@ -37,8 +38,16 @@ exports.postUserDetails = async (req, res) => {
     });
 };
 
-exports.getAllUsers = (req, res) => {
-  User.findAll()
+exports.getAllUsers = async (req, res) => {
+  User.findAll({
+    include: {
+      model: Product,
+      as: "user_product"
+
+    }
+  }
+
+  )
     .then((users) => res.send(users))
     .catch((error) =>
       res.status(500).send({
