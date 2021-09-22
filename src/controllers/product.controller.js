@@ -9,11 +9,13 @@ exports.postProductDetails = async (req, res) => {
   }
   try {
     const Img = req.body.image;
+    //console.log(Img);
     var uploadedResponse = await cloudinary.uploader.upload(Img, {
       upload_preset: "neppharm_products",
     });
     console.log(uploadedResponse);
   } catch (error) {
+    console.log(error.message);
     res.status(500).send({
       message: error.message || "Error while uploading to cloudinary",
     });
