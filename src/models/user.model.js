@@ -46,5 +46,11 @@ module.exports = (sequelize, Datatypes) => {
       },
     },
   });
+  User.associate = (models) => {
+    User.hasMany(models.Order, {
+      onDelete: "cascade",
+    });
+  };
+
   return User;
 };

@@ -20,6 +20,9 @@ const blogRoutes = require("./src/routes/blog.route");
 const { urlencoded } = require("body-parser");
 app.use("/blog", blogRoutes);
 
+const orderRoutes = require("./src/routes/order.route");
+app.use("/orders", orderRoutes);
+
 const port = process.env.PORT || 5000;
 db.sequelize.sync().then(() => {
   app.listen(port, async () => {
